@@ -1,0 +1,71 @@
+class Solution {
+public:
+    string addStrings(string num1, string num2) {
+        string res;
+        int pre=0;
+        
+        int x=max(num1.size(),num2.size());
+        int num_1,num_2;
+        for(num_1=num1.size()-1,num_2=num2.size()-1;num_1 >=0 and num_2>=0 ; num_1--,num_2--)
+    {
+     res+=to_string((num1[num_1]-'0' + num2[num_2]-'0' +pre)%10);
+     if(num1[num_1]-'0' + num2[num_2]-'0' + pre >=10)
+     {
+        
+        pre=1;
+     }
+     else 
+     pre=0;
+
+   
+    }
+   
+    
+        while(num_1>=0)
+        {
+        res+=to_string((num1[num_1]-'0'+pre)%10);
+        cout << num1[num_1] - '0' << '\n';
+        cout << "res = " << res << '\n';
+        if(num1[num_1]-'0'+pre>=10)
+        {
+         
+          pre=1;
+        }
+        else 
+        {
+            pre=0;
+        }
+       
+         num_1--;
+        }
+       
+    
+   
+        while(num_2>=0)
+        {
+        res+=to_string((num2[num_2]-'0'+pre)%10);
+        if(num2[num_2]-'0'+pre>=10)
+        {
+           
+            pre=1;
+        }
+        else 
+        {
+            pre=0;
+        }
+        num_2--;
+
+        }
+       
+    
+     
+    
+    if(pre)
+    {
+        res+=to_string(pre);
+    }
+    
+    reverse(res.begin(),res.end());
+    return res;
+    }
+};
